@@ -4,6 +4,7 @@ import TemperatureToggle from './components/TemperatureToggle'
 import LoadingSpinner from './components/LoadingSpinner'
 import ErrorMessage from './components/ErrorMessage'
 import WeatherCard from './components/WeatherCard'
+import WeatherForecast from './components/WeatherForecast'
 
 function App() {
   return (
@@ -28,16 +29,16 @@ function App() {
                 App
               </span>
             </h1>
-            <p className='text-white/80 text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed'>
+            {/* <p className='text-white/80 text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed'>
             Experience weather like never before with real-time data,
             beautiful visuals and precise forecasts at your fingertips.
             worldwide
-            </p>
+            </p> */}
           </div>
 
           <div className='flex flex-col lg:flex-row items-center justify-center space-y-6
            lg:space-y-0 lg:space-x-6 mb-12'>
-            <SearchBar/>
+            {/* <SearchBar/> */}
             <TemperatureToggle/>
           </div>
         </div>
@@ -64,7 +65,10 @@ function App() {
           <div className='grid grid-cols-1 xl:grid-cols-3 gap-8'>
             <div className='xl:col-span-2'>
               <WeatherCard/>
-
+            </div>
+            <div className='xl:col-span-1'>
+              {/* {Conditional rendering} */}
+              <WeatherForecast/>
             </div>
           </div>
         </div>
