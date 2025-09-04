@@ -1,5 +1,8 @@
 import React from 'react'
 import SearchBar from './components/SearchBar'
+import TemperatureToggle from './components/TemperatureToggle'
+import LoadingSpinner from './components/LoadingSpinner'
+import ErrorMessage from './components/ErrorMessage'
 
 function App() {
   return (
@@ -34,7 +37,26 @@ function App() {
           <div className='flex flex-col lg:flex-row items-center justify-center space-y-6
            lg:space-y-0 lg:space-x-6 mb-12'>
             <SearchBar/>
-        
+            <TemperatureToggle/>
+          </div>
+        </div>
+
+        {/* {Main content} */}
+        <div className='space-y-8'>
+          {/* {Conditional rendering} */}
+          <div className='flex justify-center'>
+            <div className='bg-white/10 backgrop-blur-xl rounded-3xl p-8 border
+            border-white/20'>
+              <LoadingSpinner/>
+              <p className='text-white/80 text-center mt-4 font-medium'>
+              Fetching latest weather data...
+              </p>
+            </div>
+          </div>
+
+          {/* {Conditional rendering} */}
+          <div className='max-w-2xl mx-auto'>
+            <ErrorMessage/>
           </div>
         </div>
       </div>
@@ -43,4 +65,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
