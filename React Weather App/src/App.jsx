@@ -3,6 +3,7 @@ import SearchBar from './components/SearchBar'
 import TemperatureToggle from './components/TemperatureToggle'
 import LoadingSpinner from './components/LoadingSpinner'
 import ErrorMessage from './components/ErrorMessage'
+import WeatherCard from './components/WeatherCard'
 
 function App() {
   return (
@@ -44,7 +45,7 @@ function App() {
         {/* {Main content} */}
         <div className='space-y-8'>
           {/* {Conditional rendering} */}
-          <div className='flex justify-center'>
+          {/* <div className='flex justify-center'>
             <div className='bg-white/10 backgrop-blur-xl rounded-3xl p-8 border
             border-white/20'>
               <LoadingSpinner/>
@@ -52,11 +53,19 @@ function App() {
               Fetching latest weather data...
               </p>
             </div>
-          </div>
+          </div> */}
 
           {/* {Conditional rendering} */}
-          <div className='max-w-2xl mx-auto'>
+          {/* <div className='max-w-2xl mx-auto'>
             <ErrorMessage/>
+          </div> */}
+
+          {/* {Conditional rendering} */}
+          <div className='grid grid-cols-1 xl:grid-cols-3 gap-8'>
+            <div className='xl:col-span-2'>
+              <WeatherCard/>
+
+            </div>
           </div>
         </div>
       </div>
