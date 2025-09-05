@@ -102,9 +102,9 @@ export const searchCities = async (query) => {
       if(response.status === 401){
         throw new Error(`Invalid API key. Please check your API key configuration and try again.`);
       }
-    }  
-    else{
-      throw new Error("Weather service is temporarily unavailable. Please try again later.");
+      else{
+        throw new Error("Weather service is temporarily unavailable. Please try again later.");
+      }
     }
 
     const data = await response.json();
