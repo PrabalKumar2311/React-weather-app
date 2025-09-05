@@ -88,7 +88,7 @@ export default function SearchBar({ onSearch, onLocationSearch, loading }) {
           onChange={(e) => setQuery(e.target.value)}
           placeholder='Search for a city...'
           className='w-full pl-12 pr-24 py-4 bg-white/10
-          backdrop-blur-xl border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none
+          backdrop-blur-xl border border-white/20 rounded-2xl text-lg text-white placeholder-white/50 focus:outline-none
           focus:ring-2 focus:ring-white/30 focus:border-/white/40 transition-all
           duration-300 hover:bg-white/15'
           

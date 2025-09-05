@@ -33,7 +33,7 @@ function App() {
     <div className='min-h-screen relative overflow-hidden'>
       {/* {background img with overlay} */}
       <div 
-      className='absolute inset-0 bg-cover bg-center bg-no-repeat' 
+      className='fixed inset-0 -z-10' 
       style={{backgroundImage:`url('https://images.pexels.com/photos/1431822/pexels-photo-1431822.jpeg?auto=compress&cs=tinysrgv&w=1920&h=1080&fit=crop')`
       }}>
         <div className='absolute inset-0 bg-gradient-to-br from-blue-900/40 via-purple-900/
