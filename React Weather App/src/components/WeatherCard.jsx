@@ -22,31 +22,31 @@ function WeatherCard({weather, unit}) {
       icon: Eye,
       label: "Visibility",
       value: `${(weather.visibility / 1000).toFixed(1)} km`,
-      color: "text-orange-300"
+      color: "text-orange-400"
     },
     {
       icon: Wind,
       label: "Wind Speed",
       value: `${weather.wind.speed.toFixed(1)} m/s`,
-      color: "text-green-300"
+      color: "text-green-400"
     },
     {
       icon: Droplets,
       label: "Humidity",
       value: `${weather.main.humidity}%`,
-      color: "text-cyan-300"
+      color: "text-cyan-400"
     },
     {
       icon: Gauge,
       label: "Pressure",
       value: `${weather.main.pressure} hPa`,
-      color: "text-purple-300"
+      color: "text-red-400"
     },
     {
       icon: Thermometer,
       label: "Feels Like",
       value: `${formatTemprature(weather.main.feels_like, unit)}°${unit}`,
-      color: "text-orange-300"
+      color: "text-orange-400"
     }
   ]
 
@@ -58,15 +58,15 @@ function WeatherCard({weather, unit}) {
       <div className='flex items-center justify-between mb-8'>
         <div className='flex items-center space-x-3'>
           <div className='p-2 bg-white/20 rounded-full'>
-            <MapPin className='w-5 h-5 text-white/80'/>
+            <MapPin className='w-10 h-10 text-white/80'/>
           </div>
           <div>
-            <h2 className='text-white font-semibold text-lg'>{weather.name}</h2>
-            <p className='text-white/60 text-sm'>{weather.sys.country}</p>
+            <h2 className='text-white font-semibold text-2xl'>{weather.name}</h2>
+            <p className='text-white/60 text-ls'>{weather.sys.country}</p>
           </div>
         </div>
         <div className='text-right'>
-          <div className='text-white/50 text-xs'>
+          <div className='text-white/50 text-ls'>
           {/* {Display Dynamic date} */}
           {new Date(weather.dt * 1000).toLocaleDateString("en-US",{
             weekday: "long",
@@ -74,7 +74,7 @@ function WeatherCard({weather, unit}) {
             day: "numeric"
           })}
           </div>
-          <div className='text-white/50 text-xs'>
+          <div className='text-white/50 text-ls'>
             {/* {Display Dynamic date} */}
             {new Date(weather.dt * 1000).toLocaleTimeString("en-US",{
             hour: "2-digit",
@@ -102,7 +102,7 @@ function WeatherCard({weather, unit}) {
         <div className='text-white/90 transform hover:scale-110 transition-transform
          duration-300'>
           {/* {Display Dynamic Icons} */}
-          <IconComponent size={20} className="drop-shadow-2xl" />
+          <IconComponent size={140} className="drop-shadow-2xl" />
         </div>
       </div>
       {/* {Weather Stats Grid} */}
@@ -113,17 +113,17 @@ function WeatherCard({weather, unit}) {
           <div key={index} className='bg-white/5 backdrop-blur-sm rounded-2xl p-4 hover:bg-white/10
         transition-all duration-300 group'> 
         <div className='flex items-center space-x-3 mb-2'>
-          <div className={`p-2 rounded-full bg-white/10 group-hover:bg-white/20
+          <div className={`mt-1 p-2 rounded-full bg-white/10 group-hover:bg-white/20
             transition-all`}
           >
             {/* {Dynamic icons} */}
-            <stat.icon className={`w-4 h-4 ${stat.color}`}/>
+            <stat.icon className={`w-8 h-8 ${stat.color}`}/>
           </div>
-          <span className='text-white/70 text-sm font-medium'>
+          <span className='ml-2 text-white/70 text-lg font-medium'>
             {stat.label}
           </span>
         </div>
-        <div className='text-white font-semibold text-lg pl-11'>
+        <div className='-mt-2 ml-6 text-white font-semibold text-2xl pl-11'>
           {stat.value}
         </div>
         </div>
@@ -137,7 +137,7 @@ function WeatherCard({weather, unit}) {
           <div className='flex items-center space-x-3 mb-2'>
             <div className='p-2 bg-orange-400/20 rounded-full'>
               
-                <Sunrise className='w-4 h-4 text-orange-300'/>
+                <Sunrise className='w-8 h-8 text-orange-400'/>
               </div>
               <span className='text-white/80 text-sm font-medium'>Sunrise</span>
             </div>
@@ -151,7 +151,7 @@ function WeatherCard({weather, unit}) {
           rounded-2xl p-4 border border-purple-400/20'>
             <div className='flex items-center space-x-3 mb-2'>
               <div className='p-2 bg-purple-400/20 rounded-full'>
-                <Sunset className='w-4 h-4 text-purple-300'/>
+                <Sunset className='w-8 h-8 text-purple-400'/>
               </div>
               <span className='text-white/80 text-sm font-medium'>Sunset</span>
             </div>

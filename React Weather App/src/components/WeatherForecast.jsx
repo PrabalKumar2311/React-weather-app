@@ -28,7 +28,7 @@ function WeatherForecast({forecast, unit}) {
         <h2 className='text-2xl font-bold text-white'>5 Day Forecast</h2>
       </div>
 
-      <div className='space-y-4'>
+      <div className='space-y-6'>
         {/* {Map method logic} */}
         {dailyItems.map((item, index)=> {
           const iconName = getWeatherIcon(item.weather[0]);
@@ -55,7 +55,7 @@ function WeatherForecast({forecast, unit}) {
           </div>
           <div className='flex items-center space-x-6'>
             <div className='flex items-center space-x-2 text-white/60'>
-              <Droplets className='w-4 h-4 text-blue-300'/>
+              <Droplets className='w-10 h-10 text-blue-300'/>
               <span className='text-sm font-medium'>
                 {/* {Dynamic details} */}
                 {Math.round(item.pop * 100)}%
