@@ -37,7 +37,7 @@ export const formatTime = (timestamp) => {
 };
 
 
-export const formatDate = () => {
+export const formatDate = (timestamp) => {
   return new Date(timestamp * 1000).toLocaleDateString("en-US",{
     weekday: "short",
     month: "short",

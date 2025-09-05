@@ -47,7 +47,7 @@ function App() {
           <div className='mb-8'>
             <h1 className='text-5xl md:text-7xl font-bold text-white mb-4 drop-shadow-2xl tracking-tight'>
               weather
-              <span className='bg-gradient-to-r form blue-400 to-purple-400 bg-clip-text text-transparent'>
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 App
               </span>
             </h1>
@@ -97,7 +97,7 @@ function App() {
             </div>
             <div className='xl:col-span-1'>
               {/* {Conditional rendering} */}
-              {forecast && <WeatherForecast /> }
+              {forecast && <WeatherForecast forecast={forecast} unit={unit}/> }
               
             </div>
           </div>

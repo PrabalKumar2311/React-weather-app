@@ -9,13 +9,13 @@ import {
   Thermometer
  } from 'lucide-react'
 import React from 'react'
-import { getWeatherIcon, formatTemprature } from '../utils/weatherutils'
+import { getWeatherIcon, formatTemprature, formatTime } from '../utils/weatherutils'
 import * as LucideIcons from "lucide-react"
 
 function WeatherCard({weather, unit}) {
 
   const iconName = getWeatherIcon(weather.weather[0]); 
-  const iconComponent = LucideIcons[iconName] || LucideIcons.Cloud;
+  const IconComponent = LucideIcons[iconName] || LucideIcons.Cloud;
   
   const WeatherStats = [
     {
@@ -54,19 +54,32 @@ function WeatherCard({weather, unit}) {
     <div className='bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8
     shadow-2xl hover:bg-white/15 transition-all duration-500'>
       {/* {Header} */}
+      {console.log(weather)}
       <div className='flex items-center justify-between mb-8'>
         <div className='flex items-center space-x-3'>
           <div className='p-2 bg-white/20 rounded-full'>
             <MapPin className='w-5 h-5 text-white/80'/>
           </div>
           <div>
-            <h2 className='text-white font-semibold text-lg'>Weather Name</h2>
-            <p className='text-white/60 text-sm'>Weather Country</p>
+            <h2 className='text-white font-semibold text-lg'>{weather.name}</h2>
+            <p className='text-white/60 text-sm'>{weather.sys.country}</p>
           </div>
         </div>
         <div className='text-right'>
           <div className='text-white/50 text-xs'>
           {/* {Display Dynamic date} */}
+          {new Date(weather.dt * 1000).toLocaleDateString("en-US",{
+            weekday: "long",
+            month: "short",
+            day: "numeric"
+          })}
+          </div>
+          <div className='text-white/50 text-xs'>
+            {/* {Display Dynamic date} */}
+            {new Date(weather.dt * 1000).toLocaleTimeString("en-US",{
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
           </div>
         </div>
       </div>
@@ -75,40 +88,47 @@ function WeatherCard({weather, unit}) {
       <div className='flex items-center justify-between mb-10'>
         <div flex='1'>
           <div className='text-7xl font-bold text-white mb-3 tracking-tight'>
-            Main Temp
+            {`${formatTemprature(weather.main.temp, unit)}°`}
+            <span className='text-4xl font-normal text-white/70'>{unit}</span>
           </div>
           <div className='text-white/90 text-xl capitalize mb-2 font-medium'>
-            Weather Description
+            {weather.weather[0].description}
           </div>
           <div className='flex items-center space-x-4 text-white/60 text-sm'>
-          <span>Max Temp</span>
-          <span>Min Temp</span>
+          <span>H: {formatTemprature(weather.main.temp_max, unit)}°</span>
+          <span>L: {formatTemprature(weather.main.temp_min, unit)}°</span>
           </div>
         </div>
         <div className='text-white/90 transform hover:scale-110 transition-transform
          duration-300'>
           {/* {Display Dynamic Icons} */}
+          <IconComponent size={20} className="drop-shadow-2xl" />
         </div>
       </div>
       {/* {Weather Stats Grid} */}
       <div className='grid grid-cols-2 lg:grid-cols-3 gap-4 mb-6'>
         {/* {Map method logic} */}
-        <div className='bg-white/5 backdrop-blur-sm rounded-2xl p-4 hover:bg-white/10
+        {WeatherStats.map((stat, index) => {
+          return(
+          <div key={index} className='bg-white/5 backdrop-blur-sm rounded-2xl p-4 hover:bg-white/10
         transition-all duration-300 group'> 
         <div className='flex items-center space-x-3 mb-2'>
           <div className={`p-2 rounded-full bg-white/10 group-hover:bg-white/20
             transition-all`}
           >
             {/* {Dynamic icons} */}
+            <stat.icon className={`w-4 h-4 ${stat.color}`}/>
           </div>
           <span className='text-white/70 text-sm font-medium'>
-            Stat Label
+            {stat.label}
           </span>
         </div>
         <div className='text-white font-semibold text-lg pl-11'>
-          Stat Value
+          {stat.value}
         </div>
         </div>
+          )
+        })}
       </div>
       {/* {Sum Time} */}
       <div className='grid grid-cols-2 gap-4'>
@@ -123,6 +143,7 @@ function WeatherCard({weather, unit}) {
             </div>
             <div className='text-white font-semibold text-lg pl-11'>
               {/* {Dynamic content} */}
+              {formatTime(weather.sys.sunrise)}
             </div>
           </div>
 
@@ -136,6 +157,7 @@ function WeatherCard({weather, unit}) {
             </div>
             <div className='text-white font-semibold text-lg pl-11'>
               {/* {Dynamic content} */}
+              {formatTime(weather.sys.sunset)}
             </div>
           </div>
         </div>
