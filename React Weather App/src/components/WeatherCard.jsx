@@ -1,7 +1,55 @@
-import { MapPin, Sunrise,Sunset } from 'lucide-react'
+import { 
+  MapPin,
+  Eye,
+  Wind,
+  Droplets,
+  Gauge,
+  Sunrise,
+  Sunset,
+  Thermometer
+ } from 'lucide-react'
 import React from 'react'
+import { getWeatherIcon } from '../utils/weatherutils'
+import * as LucideIcons from "lucide-react"
 
-function WeatherCard() {
+function WeatherCard({weather, unit}) {
+
+  const iconName = getWeatherIcon(weather.weather[0]); 
+  const iconComponent = LucideIcons[iconName] || LucideIcons.Cloud;
+  
+  const WeatherStats = [
+    {
+      icon: Eye,
+      label: "Visibility",
+      value: `${(weather.visibility / 1000).toFixed(1)} km`,
+      color: "text-orange-300"
+    },
+    {
+      icon: Wind,
+      label: "Wind Speed",
+      value: `${weather.wind.speed.toFixed(1)} m/s`,
+      color: "text-green-300"
+    },
+    {
+      icon: Droplets,
+      label: "Humidity",
+      value: `${weather.main.humidity}%`,
+      color: "text-cyan-300"
+    },
+    {
+      icon: Gauge,
+      label: "Pressure",
+      value: `${weather.main.pressure} hPa`,
+      color: "text-purple-300"
+    },
+    {
+      icon: Thermometer,
+      label: "Feels Like",
+      value: `${formatTemprature(weather.main.feels_like, unit)}°${unit}`,
+      color: "text-orange-300"
+    }
+  ]
+
   return (
     <div className='bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8
     shadow-2xl hover:bg-white/15 transition-all duration-500'>

@@ -12,10 +12,11 @@ export const getCurrentWeather = async (city) => {
       else if(response.status === 401){
         throw new Error("Invalid API key. Please check your API key configuration and try again.");
       }
-    }
-    else{
+      else{
       throw new Error("Weather service is temporarily unavailable. Please try again later.");
     }
+    }
+    
     const data = await response.json();
   
     if(!data.dt){
@@ -43,10 +44,11 @@ export const getCurrentWeatherByCoords = async (lat, lon) => {
       if(response.status === 401){
         throw new Error(`Invalid API key. Please check your API key configuration and try again.`);
       }
-    }  
-    else{
-      throw new Error("Weather service is temporarily unavailable. Please try again later.");
+      else{
+        throw new Error("Weather service is temporarily unavailable. Please try again later.");
     }
+    }  
+    
     const data = await response.json();
   
     if(!data.dt){
@@ -76,10 +78,11 @@ export const getWeatherForecast = async (city) => {
       else if(response.status === 401){
         throw new Error("Invalid API key. Please check your API key configuration and try again.");
       }
-    }
-    else{
+      else{
       throw new Error("Weather service is temporarily unavailable. Please try again later.");
+      }
     }
+    
 
     return await response.json();
 

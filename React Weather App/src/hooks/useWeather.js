@@ -16,7 +16,7 @@ export const useWeather = () => {
     setLoading(true);
     setError(null);
     try {
-      const weatherData = await Promise.all([
+      const [weatherData, forecast] = await Promise.all([
         getCurrentWeather(city),
         getWeatherForecast(city),
       ]);
@@ -75,7 +75,7 @@ export const useWeather = () => {
 
   useEffect(() => {
     fetchWeatherByCity("New York");
-  });
+  }, []);
 
   return {
     currentWeather,

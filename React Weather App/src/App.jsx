@@ -20,6 +20,15 @@ function App() {
     toggleUnits
   } = useWeather();
 
+  const handleRetry = () => {
+    if(currentWeather){
+      fetchWeatherByCity(currentWeather.name)
+    }
+    else{
+      fetchWeatherByCity("New York")
+    }
+  }
+
   return (
     <div className='min-h-screen relative overflow-hidden'>
       {/* {background img with overlay} */}
@@ -52,30 +61,30 @@ function App() {
           <div className='flex flex-col lg:flex-row items-center justify-center space-y-6
            lg:space-y-0 lg:space-x-6 mb-12'>
             <SearchBar onSearch={fetchWeatherByCity} onLocationSearch={fetchWeatherByLocation} loading={loading}/>
-            <TemperatureToggle unit={unit}/>
+            <TemperatureToggle unit={unit} onToggle={toggleUnits}/>
           </div>
         </div>
 
         {/* {Main content} */}
         <div className='space-y-8'>
           {/* {Conditional rendering} */}
-          {/* {loading && (
+          {loading && (
              <div className='flex justify-center'>
-            <div className='bg-white/10 backgrop-blur-xl rounded-3xl p-8 border
-            border-white/20'>
+              <div className='bg-white/10 backdrop-blur-xl rounded-3xl p-8 border
+              border-white/20'>
               <LoadingSpinner/>
               <p className='text-white/80 text-center mt-4 font-medium'>
               Fetching latest weather data...
               </p>
             </div>
           </div>
-          )} */}
+          )}
 
           {/* {Conditional rendering} */}
           
           {error && !loading && (
           <div className='max-w-2xl mx-auto'>
-            {/* <ErrorMessage/> */}
+            <ErrorMessage message={error} onRetry={handleRetry}/>
           </div>
           )}
           
@@ -84,11 +93,11 @@ function App() {
           { currentWeather && !loading && (
             <div className='grid grid-cols-1 xl:grid-cols-3 gap-8'>
             <div className='xl:col-span-2'>
-              <WeatherCard/>
+              <WeatherCard weather={currentWeather} unit={unit}/>
             </div>
             <div className='xl:col-span-1'>
               {/* {Conditional rendering} */}
-              {forecast && <WeatherForecast/> }
+              {forecast && <WeatherForecast /> }
               
             </div>
           </div>
