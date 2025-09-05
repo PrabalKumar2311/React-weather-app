@@ -9,7 +9,7 @@ import {
   Thermometer
  } from 'lucide-react'
 import React from 'react'
-import { getWeatherIcon } from '../utils/weatherutils'
+import { getWeatherIcon, formatTemprature } from '../utils/weatherutils'
 import * as LucideIcons from "lucide-react"
 
 function WeatherCard({weather, unit}) {
