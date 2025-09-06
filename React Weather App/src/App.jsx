@@ -29,12 +29,14 @@ function App() {
     }
   }
 
+  let imgaze = `url('https://images.pexels.com/photos/1431822/pexels-photo-1431822.jpeg?auto=compress&cs=tinysrgv&w=1920&h=1080&fit=crop')`;
+
   return (
     <div className='min-h-screen relative overflow-hidden'>
       {/* {background img with overlay} */}
       <div 
       className='fixed inset-0 -z-10' 
-      style={{backgroundImage:`url('https://images.pexels.com/photos/1431822/pexels-photo-1431822.jpeg?auto=compress&cs=tinysrgv&w=1920&h=1080&fit=crop')`
+      style={{backgroundImage: imgaze
       }}>
         <div className='absolute inset-0 bg-gradient-to-br from-blue-900/40 via-purple-900/
         30 to-indigo-900/40'></div>
@@ -46,7 +48,7 @@ function App() {
         <div className='text-center mb-12'>
           <div className='mb-8'>
             <h1 className='text-5xl md:text-7xl font-bold text-white mb-4 drop-shadow-2xl tracking-tight'>
-              weather
+              Weather
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 App
               </span>

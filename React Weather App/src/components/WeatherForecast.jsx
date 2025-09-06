@@ -28,7 +28,7 @@ function WeatherForecast({forecast, unit}) {
         <h2 className='text-2xl font-bold text-white'>5 Day Forecast</h2>
       </div>
 
-      <div className='space-y-6'>
+      <div className='space-y-6.5'>
         {/* {Map method logic} */}
         {dailyItems.map((item, index)=> {
           const iconName = getWeatherIcon(item.weather[0]);

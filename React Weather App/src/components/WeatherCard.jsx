@@ -139,9 +139,9 @@ function WeatherCard({weather, unit}) {
               
                 <Sunrise className='w-8 h-8 text-orange-400'/>
               </div>
-              <span className='text-white/80 text-sm font-medium'>Sunrise</span>
+              <span className='ml-2 text-white/80 text-lg font-medium'>Sunrise</span>
             </div>
-            <div className='text-white font-semibold text-lg pl-11'>
+            <div className='ml-6 text-white font-semibold text-2xl pl-11'>
               {/* {Dynamic content} */}
               {formatTime(weather.sys.sunrise)}
             </div>
@@ -153,9 +153,9 @@ function WeatherCard({weather, unit}) {
               <div className='p-2 bg-purple-400/20 rounded-full'>
                 <Sunset className='w-8 h-8 text-purple-400'/>
               </div>
-              <span className='text-white/80 text-sm font-medium'>Sunset</span>
+              <span className='ml-2 text-white/80 text-lg font-medium'>Sunset</span>
             </div>
-            <div className='text-white font-semibold text-lg pl-11'>
+            <div className='ml-6 text-white font-semibold text-2xl pl-11'>
               {/* {Dynamic content} */}
               {formatTime(weather.sys.sunset)}
             </div>
